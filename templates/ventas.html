@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3>Registro de ventas</h3>
+            <i class='bx bx-search' ></i>
+            <i class='bx bx-filter' ></i>
+            <a href="/add_form/ventas"><i class='bx bx-plus'></i></a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cliente</th>
+                    <th>Talla</th>
+                    <th>Color</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in Ventas %}
+                <tr>
+                    <td>{{venta.1}}</td>
+                    <td>{{venta.2}}</td>
+                    <td>{{venta.3}}</td>
+                    <td>{{venta.4}}</td>
+                    <td>{{venta.5}}</td>
+                    <td>{{venta.6}}</td>
+                    <td>{{venta.7}}</td>
+                    <td>
+                        <a href="/edit_venta/{{venta.0}}"><span class="status completed">Editar</span></a>
+                        <a href="/delete_venta/{{venta.0}}"><span class="status pending">Eliminar</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

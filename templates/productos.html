@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3>Registro de productos</h3>
+            <i class='bx bx-search' ></i>
+            <i class='bx bx-filter' ></i>
+            <a href="/add_form/producto"><i class='bx bx-plus'></i></a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Marca</th>
+                    <th>Stock</th>
+                    <th>Categoria</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in Producto %}
+                <tr>
+                    <td>{{producto.1}}</td>
+                    <td>{{producto.2}}</td>
+                    <td>{{producto.3}}</td>
+                    <td>{{producto.4}}</td>
+                    <td>{{producto.5}}</td>
+                    <td>
+                        <a href="/edit_producto/{{producto.0}}"><span class="status completed">Editar</span></a>
+                        <a href="/update_producto/{{producto.0}}"><span class="status pending">Eliminar</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

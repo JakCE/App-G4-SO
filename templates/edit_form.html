@@ -1,0 +1,106 @@
+{% extends 'index.html' %}
+{% block main %}
+
+{% if opc=="cliente" %}
+<div class="form-data">
+    <div class="head">
+        <h1>EDITAR CLIENTE</h1>
+    </div>
+    <form action="/update_cliente/{{cliente.0}}" class="form-body" method="POST">
+        <div class="inputs-form">
+            <input type="text" name="nombres" placeholder="Nombres" value="{{cliente.1}}">
+            <input type="text" name="apellidos" placeholder="Apellidos" value="{{cliente.2}}">
+            <input type="text" name="celular" placeholder="Celular" value="{{cliente.3}}">
+            <input type="text" name="email" placeholder="Email" value="{{cliente.4}}">
+            <input type="text" name="direccion" placeholder="Dirección" value="{{cliente.5}}">
+        </div>
+        <div class="btn-form">
+            <button type="submit" class="submit-btn">
+                <span>Editar</span>
+            </button>
+        </div>
+    </form>
+</div>
+{% else %}
+    {% if opc=="categoria" %}
+<div class="form-data">
+    <div class="head">
+        <h1>EDITAR CATEGORÍA</h1>
+    </div>
+    <form action="/update_categoria/{{categoria.0}}" class="form-body" method="POST">
+        <div class="inputs-form">
+            <input type="text" name="nombre" placeholder="Nombre" value="{{categoria.1}}">
+            <input type="text" name="descripcion" placeholder="Descripción" value="{{categoria.2}}">
+        </div>
+        <div class="btn-form">
+            <button type="submit" class="submit-btn">
+                <span>Editar</span>
+            </button>
+        </div>
+    </form>
+</div>
+    {% else %}
+        {% if opc=="producto" %}
+
+        <div class="form-data">
+            <div class="head">
+                <h1>EDITAR PRODUCTO</h1>
+            </div>
+            <form action="/update_producto/{{producto.0}}" class="form-body" method="POST">
+                <div class="inputs-form">
+                    <input type="text" name="descripcion" placeholder="descripcion" value="{{producto.1}}">
+                    <input type="text" name="precio" placeholder="precio" value="{{producto.2}}">
+                    <input type="text" name="marca" placeholder="marca" value="{{producto.3}}">
+                    <input type="text" name="stock" placeholder="stock" value="{{producto.4}}">
+                    <select name="categoria" value="{{producto.5}}" class="categoria">
+                        {% for categoria in Categoria %}
+                        <option>{{categoria.0}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="btn-form">
+                    <button type="submit" class="submit-btn">
+                        <span>Editar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        {% else %}
+            {% if opc=="ventas" %}
+        
+            <div class="form-data">
+                <div class="head">
+                    <h1>EDITAR VENTA</h1>
+                </div>
+                <form action="/update_venta/{{venta.0}}" class="form-body" method="POST">
+                    <div class="inputs-form">
+                        <select name="id_prod" value="{{venta.1}}" id="" class="id_prod">
+                            {% for producto in Producto %}
+                            <option>{{producto.0}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="id_cli" value="{{venta.2}}" id="" class="id_cli">
+                            {% for cliente in Cliente %}
+                            <option>{{cliente.2}}, {{cliente.1}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="text" name="talla" placeholder="Talla" value="{{venta.3}}">
+                        <input type="text" name="color" placeholder="Color" value="{{venta.4}}">
+                        <input type="number" name="cantidad" placeholder="Cantidad" value="{{venta.5}}">
+                        <input type="date" name="fecha" placeholder="Fecha" value="{{venta.6}}">
+                        <input type="text" name="monto" placeholder="Monto" value="{{venta.7}}">
+                    </div>
+                    <div class="btn-form">
+                        <button type="submit" class="submit-btn">
+                            <span>Editar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="main-part">
+    <div class="head">
+        <h1>TIENDA</h1>
+    </div>
+    <div class="cards-content">
+        {% for producto in Producto %}
+        <div class="card-prod">
+            <div class="img-prod">
+                <img src="/img/people.png">
+            </div>
+            <div class="contenido-card">
+                <div class="desc">
+                    <h2>{{producto.1}}</h2>
+                </div>
+                <div class="datos">
+                    <div class="marca"><h5>{{producto.3}}</h5></div>
+                    <div class="precio"><h4>S/. {{producto.2}}</h4></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3>Registro de clientes</h3>
+            <i class='bx bx-search' ></i>
+            <i class='bx bx-filter' ></i>
+            <a href="/add_form/cliente"><i class='bx bx-plus'></i></a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Celular</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in Cliente %}
+                <tr>
+                    <td>{{cliente.1}}</td>
+                    <td>{{cliente.2}}</td>
+                    <td>{{cliente.3}}</td>
+                    <td>{{cliente.4}}</td>
+                    <td>{{cliente.5}}</td>
+                    <td>
+                        <a href="/edit_cliente/{{cliente.0}}"><span class="status completed">Editar</span></a>
+                        <a href="/delete_cliente/{{cliente.0}}"><span class="status pending">Eliminar</span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

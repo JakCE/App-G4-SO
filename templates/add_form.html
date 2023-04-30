@@ -1,0 +1,106 @@
+{% extends 'index.html' %}
+{% block main %}
+
+{% if opc=="cliente" %}
+<div class="form-data">
+    <div class="head">
+        <h1>AGREGAR CLIENTE</h1>
+    </div>
+    <form action="/add_cliente" class="form-body" method="POST">
+        <div class="inputs-form">
+            <input type="text" name="nombres" placeholder="Nombres">
+            <input type="text" name="apellidos" placeholder="Apellidos">
+            <input type="text" name="celular" placeholder="Celular">
+            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="direccion" placeholder="Dirección">
+        </div>
+        <div class="btn-form">
+            <button type="submit" class="submit-btn">
+                <span>Save</span>
+            </button>
+        </div>
+    </form>
+</div>
+{% else %}
+    {% if opc=="categoria" %}
+<div class="form-data">
+    <div class="head">
+        <h1>AGREGAR CATEGORÍA</h1>
+    </div>
+    <form action="/add_categoria" class="form-body" method="POST">
+        <div class="inputs-form">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="descripcion" placeholder="Descripción">
+        </div>
+        <div class="btn-form">
+            <button type="submit" class="submit-btn">
+                <span>Save</span>
+            </button>
+        </div>
+    </form>
+</div>
+    {% else %}
+        {% if opc=="producto" %}
+
+        <div class="form-data">
+            <div class="head">
+                <h1>AGREGAR PRODUCTO</h1>
+            </div>
+            <form action="/add_producto" class="form-body" method="POST">
+                <div class="inputs-form">
+                    <input type="text" name="descripcion" placeholder="descripcion">
+                    <input type="text" name="precio" placeholder="precio">
+                    <input type="text" name="marca" placeholder="marca">
+                    <input type="text" name="stock" placeholder="stock">
+                    <select name="categoria" id="" class="categoria">
+                        {% for categoria in Categoria %}
+                        <option>{{categoria.0}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="btn-form">
+                    <button type="submit" class="submit-btn">
+                        <span>Save</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        {% else %}
+            {% if opc=="ventas" %}
+        
+            <div class="form-data">
+                <div class="head">
+                    <h1>AGREGAR VENTA</h1>
+                </div>
+                <form action="/add_venta" class="form-body" method="POST">
+                    <div class="inputs-form">
+                        <select name="id_prod" id="" class="id_prod">
+                            {% for producto in Producto %}
+                            <option>{{producto.0}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="id_cli" id="" class="id_cli">
+                            {% for cliente in Cliente %}
+                            <option>{{cliente.0}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="text" name="talla" placeholder="talla">
+                        <input type="text" name="color" placeholder="color">
+                        <input type="number" name="cantidad" placeholder="cantidad">
+                        <input type="date" name="fecha" placeholder="fecha">
+                        <input type="text" name="monto" placeholder="monto">
+                    </div>
+                    <div class="btn-form">
+                        <button type="submit" class="submit-btn">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% endblock %}
