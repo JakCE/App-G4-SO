@@ -17,7 +17,7 @@ app.secret_key = 'mysecretkey'
 @app.route('/')
 def Index():
     return render_template('dashboard.html')
-    
+
 #CRUD PRODUCTO
 @app.route('/add_form/producto')
 def add_form_producto():
