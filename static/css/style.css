@@ -606,6 +606,7 @@ form input{
 	display: block;
 	align-items: center;
 	justify-content: center;
+	color: var(--dark);
 }
 .datos{
 	width: 160px;
@@ -613,6 +614,7 @@ form input{
 	align-items: center;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
+	color: var(--dark);
 }
 
 select{
